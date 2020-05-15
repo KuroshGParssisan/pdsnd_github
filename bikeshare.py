@@ -63,6 +63,7 @@ def get_filters():
         except:
             print('That is not a valid day!')
     print('-'*40)
+
     return(city, month, day)
 
 
