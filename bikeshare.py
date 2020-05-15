@@ -1,5 +1,7 @@
 #References: Udacity, Stack Overflow.
 
+"""This program is called 'Explore US Bikeshare Data'. It allows us to query data from multiple files and apply filters and give statistics about the data."""
+
 import time
 import datetime as dt
 import pandas as pd
@@ -227,7 +229,7 @@ def raw_data(city):
             continue
         else:
             break
-#Main function    
+#Main function
 def main():
     while True:
         city, month, day = get_filters()
