@@ -13,6 +13,7 @@ CITY_DATA = { 'chicago': 'chicago.csv',
               'washington': 'washington.csv' }
 
 def get_filters():
+
     print('Hello! Let\'s explore some US bikeshare data!')
     print('\n')
 
@@ -142,8 +143,6 @@ def station_stats(df):
     most_common_start_and_end_station = df.groupby(['Start Station', 'End Station']).size().idxmax()
 
     print('Most commonly used combination of Start and End Stations: ', most_common_start_and_end_station)
-
-
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
@@ -156,6 +155,7 @@ def trip_duration_stats(df):
     # TO DO: display total travel time
 
     total_travel_time = df['Trip Duration'].sum()
+
     print('Total travel time: ', total_travel_time)
 
     # TO DO: display mean travel time
@@ -185,8 +185,10 @@ def user_stats(df):
 
     try:
         print('\n')
+
         user_gender = df['Gender']
         user_gender_count = user_gender.value_counts()
+
         print('Count of gender: ')
         print(user_gender_count.to_string(index = True))
     except KeyError:
@@ -196,8 +198,10 @@ def user_stats(df):
 
     try:
         print('\n')
+
         user_birth_year = df['Birth Year']
         user_recent_common_birth_year = user_birth_year.value_counts().idxmax()
+
         print('Most common recent year of birth: ', int(user_recent_common_birth_year))
     except KeyError:
         pass
@@ -219,9 +223,11 @@ def raw_data(city):
                 pass
             else:
                 answer = input('\nDo you want to read the next 5 lines of raw data? Enter yes or anything else key to quit.\n')
+
             print('Showing raw data: ')
             print('\n')
             print(chunk)
+
             counter = 1
             continue
         else:
