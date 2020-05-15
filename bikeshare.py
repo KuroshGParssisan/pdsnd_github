@@ -1,17 +1,18 @@
 #References: Udacity, Stack Overflow.
 
 import time as t
+"""This program is called 'Explore US Bikeshare Data'. It allows us to query data from multiple files and apply filters and give statistics about the data."""
 import datetime as dt
 import pandas as pd
 import numpy as np
 from itertools import islice
 
-
+#Dictionary with source data
 
 CITY_DATA = { 'chicago': 'chicago.csv',
               'new york city': 'new_york_city.csv',
               'washington': 'washington.csv' }
-
+#Function to get the filters
 def get_filters():
 
     print('Hello! Let\'s explore some US bikeshare data!')
@@ -62,12 +63,13 @@ def get_filters():
                 print('That is not a valid day!')
         except:
             print('That is not a valid day!')
+
     print('-'*40)
 
     return(city, month, day)
 
 
-
+#Function to load the data into a pandas DataFrame
 def load_data(city, month, day):
     df = pd.read_csv(CITY_DATA[city])
     df['Start Time'] = pd.to_datetime(df['Start Time'])
@@ -84,7 +86,7 @@ def load_data(city, month, day):
 
     return df
 
-
+#Function to calculate the Time Stats
 def time_stats(df):
     """Displays statistics on the most frequent times of travel."""
 
@@ -121,6 +123,7 @@ def time_stats(df):
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
+#Function to calculate the Station Stats
 def station_stats(df):
     """Displays statistics on the most popular stations and trip."""
 
@@ -144,9 +147,11 @@ def station_stats(df):
     most_common_start_and_end_station = df.groupby(['Start Station', 'End Station']).size().idxmax()
 
     print('Most commonly used combination of Start and End Stations: ', most_common_start_and_end_station)
+
+
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
-
+#Function to calculate the Trip Duration Stats
 def trip_duration_stats(df):
     """Displays statistics on the total and average trip duration."""
 
@@ -167,7 +172,7 @@ def trip_duration_stats(df):
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
-
+#Function to calculate the User Stats
 def user_stats(df):
     """Displays statistics on bikeshare users."""
 
@@ -233,7 +238,7 @@ def raw_data(city):
             continue
         else:
             break
-
+#Main function
 def main():
     while True:
         city, month, day = get_filters()
